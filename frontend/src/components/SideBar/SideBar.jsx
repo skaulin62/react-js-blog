@@ -36,7 +36,7 @@ const SideBar = ({
                 <li
                   className={clsx(
                     ["sidebar__tag"],
-                    [{ ["activeTag"]: index == activeIndex }]
+                    [{ ["activeTag"]: index === activeIndex }]
                   )}
                   key={index}
                   onClick={() => setInActiveIndex(index, obj)}
