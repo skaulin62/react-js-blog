@@ -11,8 +11,7 @@ import { default as checkAuth } from "./utils/checkAuth.js";
 import { PostController, UserController } from "./controllers/Controllers.js";
 import handleValErrors from "./utils/handleValidationErrors.js";
 import cors from "cors";
-const uri =
-  "mongodb+srv://skaulin2:Ilikemeat62!@cluster0.xio6bao.mongodb.net/blog?retryWrites=true&w=majority";
+const uri = process.env.MONGODB_URI;
 mongoose
   .connect(uri)
   .then(() => {
