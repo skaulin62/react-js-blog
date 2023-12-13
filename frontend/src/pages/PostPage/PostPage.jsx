@@ -9,7 +9,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { fetchAddComment } from "../../Redux/slices/slicePosts";
 const PostPage = () => {
   const params = useParams();
-  const [data, setData] = React.useState();
+  const [data, setData] = React.useState("");
   const [isLoading, setIsLoading] = React.useState(true);
   const [comment, setComment] = React.useState("");
   const user = useSelector((state) => state.auth.data);
