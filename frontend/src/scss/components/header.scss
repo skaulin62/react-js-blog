@@ -1,0 +1,134 @@
+@import '../variables.scss';
+
+.header {
+    padding: 20px 0;
+    background-color: white;
+    margin-bottom: 50px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    .container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    
+        .header__logo {
+            h2 {
+                span {
+                    background-color: blueviolet;
+                    color: white;
+                    animation: logo 2s infinite;
+                }
+            }
+        }
+
+        .header__sign {
+
+            .button {
+                margin-right: 15px;
+                
+            }
+            .header__button-signin {
+                position: relative;
+                overflow: hidden;
+                transition: color 0.1s ease-in-out;
+                z-index: 0;
+                &::before {
+                    left:-100%;
+                    top: 0;
+                    content: '';
+                    width: 100%;
+                    position: absolute;
+                    height: 100%;
+                    background-color: blueviolet;
+                    z-index:-1;
+                    transition: left 0.5s cubic-bezier(0.29, 0.57, 0.27, 0.95);
+                }
+                &:hover {
+                    color: $white;
+                }
+                &:hover::before {
+                    left: 0;
+                }
+                &:active {
+                    background-color: lighten(blueviolet, 20%);
+                    border-color:  lighten(blueviolet, 20%);    ;
+                }
+            }
+            .header__button-signup {
+               
+                transition: all 0.1s;
+
+                &:hover {
+                    background-color: darken(blueviolet, 10%);
+                }
+                &:active {
+                    background-color: lighten(blueviolet, 20%);
+                    border-color:  lighten(blueviolet, 20%);    ;
+                }
+            }
+            
+        }
+    }
+
+    &__button-add {
+        margin-right: 15px;
+
+        &:hover {
+            background-color: darken(blueviolet, 10%);
+        }
+        &:active {
+            background-color: lighten(blueviolet, 20%);
+            border-color:  lighten(blueviolet, 20%);    ;
+        }
+
+    }
+    &__button-logout {
+        margin: 0 !important;
+        border: 1px solid darken(tomato, 10%) !important;
+        color: darken(tomato, 10%) !important;
+        position: relative;
+        overflow: hidden;
+        transition: color 0.1s ease-in-out;
+        z-index: 0;
+        &::before {
+            left:-100%;
+            top: 0;
+            content: '';
+            width: 100%;
+            position: absolute;
+            height: 100%;
+            background-color: darken(tomato, 10%) ;
+            z-index:-1;
+            transition: left 0.5s cubic-bezier(0.29, 0.57, 0.27, 0.95);
+        }
+        &:hover {
+            color: $white !important;
+        }
+        &:hover::before {
+            left: 0;
+        }
+        &:active {
+            background-color: lighten(tomato, 50%) !important;
+            border-color:  lighten(tomato, 50%) !important   ;
+        }
+        
+    }
+    
+}
+
+@keyframes logo {
+    0% {
+        background-color: lighten(blueviolet, 10%);
+    }
+    25% {
+        background-color: lighten(blueviolet, 20%);
+    }
+    50% {
+        background-color: darken(blueviolet, 10%);
+    }
+    100% {
+        background-color: blueviolet;
+    }
+}

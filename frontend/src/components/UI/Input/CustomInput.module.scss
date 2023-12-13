@@ -1,0 +1,23 @@
+.input {
+    width: 100%;
+    padding: 10px 20px;
+    border: 2px solid blueviolet;
+    border-radius: 3px;
+    font-size: 18px;
+    color: black;
+    &::placeholder {
+        color: lightgray;
+    }
+    &:focus {
+        border: 2px solid lighten(blueviolet,30%)
+    }
+    margin: 5px;
+
+}
+.helperText {
+    font-size: 10px;
+    color: tomato;
+    margin-left: 20px;
+
+}
+

@@ -1,0 +1,86 @@
+@import './components/components.scss';
+@import './variables.scss';
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+
+// clear default styles
+
+button, input {
+    outline: none;
+    background-color: transparent;
+    border: none;
+    color:$black;
+}
+a,span,p,b,h1,h2,h3,h4,h5 {
+  color: $black;
+}
+a {
+    text-decoration: none;
+}
+
+ul, ol {
+list-style: none;
+}
+
+// container
+.container {
+    max-width: 1240px;
+    margin: 0 auto;
+}
+
+
+//default styles
+
+body {
+    background-color: $primaryBg;
+}
+
+.button {
+    padding: 10px 40px;
+    border-radius: 3px;
+    border: 1px solid blueviolet;
+
+    font-weight: 500;
+    font-size: 14px;
+    cursor: pointer;
+
+}
+.button-reverse {
+  padding: 10px 40px;
+  border-radius: 3px;
+  border: 1px solid blueviolet;
+  background-color: blueviolet;
+  color: white;
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+
+
+
+//home 
+
+.home {
+  &__content {
+    margin-top: 20px;
+    display: flex;  
+    justify-content: space-between;
+  }
+
+  &__posts {
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    gap:20px;
+    flex-direction: column;
+    height: 100%;
+  }
+}
+

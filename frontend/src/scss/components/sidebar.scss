@@ -1,0 +1,64 @@
+@import '../variables.scss';
+
+.sidebar {
+    width: 400px;
+    &__tags {
+       
+        justify-content: center;
+        border-radius: 3px;
+        background-color: $white;
+        padding: 30px;
+        margin-bottom: 20px;
+        h2 {
+      
+            font-weight: 500;
+            margin-bottom: 30px;
+
+        }
+        .list-tags {
+            padding: 0 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            .sidebar__tag {
+            
+                display: flex;
+                align-items: center;
+                cursor: pointer;
+                gap: 20px;
+                padding: 10px 5px;
+                &:hover {
+                    span {
+                        color: $white;
+                    }
+                    background-color: lighten(rgb(138, 43, 226, 0.5), 5%);
+                    border-radius: 3px;
+                }
+               
+            }
+            .activeTag {
+                span {
+                    color: $white;
+                }
+                background-color: lighten(rgb(138, 43, 226, 0.5), 5%);
+                border-radius: 3px;
+            }
+        }
+    }
+    &__comments {
+        border-radius: 3px;
+        background-color: $white;
+        padding: 30px;
+      
+        h2 {
+            font-weight: 500;
+            margin-bottom: 30px;
+        } 
+        .list-comments {
+            display: flex;
+            flex-direction: column;
+            gap:20px;
+        }
+    }
+    
+}
