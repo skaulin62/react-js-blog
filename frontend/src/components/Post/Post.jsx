@@ -37,7 +37,7 @@ const Post = ({ item, isOwner }) => {
           className="post__image"
           src={
             imageUrl?.includes("/uploads/")
-              ? `http://localhost:4000${imageUrl}`
+              ? `${process.env.REACT_APP_API_URL}${imageUrl}`
               : imageUrl
           }
         />

@@ -96,7 +96,7 @@ const AddPostPage = () => {
                   <img
                     width={250}
                     height={250}
-                    src={`http://localhost:4000${fields.imageUrl}`}
+                    src={`${process.env.REACT_APP_API_URL}${fields.imageUrl}`}
                   />
                   <button
                     className={styles.remove}
