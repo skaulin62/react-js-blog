@@ -68,9 +68,9 @@ const AddPostPage = () => {
         )
         .catch((err) => {
           console.log(err);
+          setError("error");
         })
         .finally(() => {
-          setError("error");
           setLoading(false);
         });
     }
