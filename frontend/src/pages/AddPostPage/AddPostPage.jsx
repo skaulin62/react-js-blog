@@ -39,7 +39,7 @@ const AddPostPage = () => {
         tags: fields.tags.split(" "),
         imageUrl: fields.imageUrl,
       };
-      setLoading(true);
+
       const { data } = isEditing
         ? await axios.patch("/posts/" + id, params)
         : await axios.post("/posts", params);

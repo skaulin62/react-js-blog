@@ -20,7 +20,7 @@ const Registration = () => {
       const formData = new FormData();
       formData.append("image", event.target.files[0]);
       const { data } = await axios.post("/upload", formData);
-      setAvatarUrl(data.url);
+      setAvatarUrl("https://s6nder-react-blog.onrender.com" + data.url);
       console.log(avatarUrl);
     } catch (err) {
       console.log(err);
@@ -74,16 +74,26 @@ const Registration = () => {
           return errors;
         }}
         onSubmit={async (values, { setSubmitting }) => {
-          const data = await dispatch(
-            fetchUserRegister({
-              email: values.email,
-              fullName: values.name + " " + values.lastName,
-              password: values.password,
-              avatarUrl,
-            })
-          );
+          const data = avatarUrl
+            ? await dispatch(
+                fetchUserRegister({
+                  email: values.email,
+                  fullName: values.name + " " + values.lastName,
+                  password: values.password,
+                  avatarUrl: avatarUrl,
+                })
+              )
+            : await dispatch(
+                fetchUserRegister({
+                  email: values.email,
+                  fullName: values.name + " " + values.lastName,
+                  password: values.password,
+                })
+              );
           if (!data?.payload) {
             return alert("Something is wrong, sorry, try again");
+          } else {
+            window.localStorage.setItem("token", data.payload.token);
           }
         }}
       >
