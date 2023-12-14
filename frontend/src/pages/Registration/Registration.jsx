@@ -20,7 +20,7 @@ const Registration = () => {
       const formData = new FormData();
       formData.append("image", event.target.files[0]);
       const { data } = await axios.post("/upload", formData);
-      setAvatarUrl("https://s6nder-react-blog.onrender.com" + data.url);
+      setAvatarUrl(process.env.REACT_APP_API_URL + data.url);
       console.log(avatarUrl);
     } catch (err) {
       console.log(err);

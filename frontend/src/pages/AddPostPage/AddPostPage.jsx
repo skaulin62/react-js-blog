@@ -102,7 +102,7 @@ const AddPostPage = () => {
                 <img
                   width={250}
                   height={250}
-                  src={`https://s6nder-react-blog.onrender.com${fields.imageUrl}`}
+                  src={`${process.env.REACT_APP_API_URL}${fields.imageUrl}`}
                 />
                 <button
                   className={styles.remove}

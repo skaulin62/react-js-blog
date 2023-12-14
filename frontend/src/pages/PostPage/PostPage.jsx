@@ -67,7 +67,7 @@ const PostPage = () => {
                 src={
                   data.imageUrl
                     ? data?.imageUrl?.includes("/uploads/")
-                      ? `https://s6nder-react-blog.onrender.com${data?.imageUrl}`
+                      ? `${process.env.REACT_APP_API_URL}${data?.imageUrl}`
                       : data?.imageUrl
                     : ""
                 }
