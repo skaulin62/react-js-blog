@@ -41,7 +41,7 @@ const upload = multer({ storage });
 app.use(cors());
 app.use(express.json());
 app.use("/uploads/", express.static("uploads"));
-app.post("/upload", checkAuth, upload.single("image"), (req, res) => {
+app.post("/upload", upload.single("image"), (req, res) => {
   res.json({
     url: `/uploads/${req.file.originalname}`,
   });

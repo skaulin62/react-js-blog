@@ -37,7 +37,7 @@ const Post = ({ item, isOwner }) => {
           className="post__image"
           src={
             imageUrl?.includes("/uploads/")
-              ? `${process.env.REACT_APP_API_URL}${imageUrl}`
+              ? `https://s6nder-react-blog.onrender.com${imageUrl}`
               : imageUrl
           }
         />
@@ -45,7 +45,7 @@ const Post = ({ item, isOwner }) => {
       <div className="post__info">
         <div className="post__user-info">
           <div className="post__user-photo-overflow">
-            <img src={user.avatarUrl} />
+            <img src={user?.avatarUrl || "/assets/images/avatar-icon.webp"} />
           </div>
           <div className="post__pseudo">
             <span className="username">{user.fullName.split(" ")[0]}</span>

@@ -1,6 +1,10 @@
 @import '../variables.scss';
 
 .header {
+    @media (max-width: 600px) {
+        padding: 20px 20px;
+      
+    }
     padding: 20px 0;
     background-color: white;
     margin-bottom: 50px;
@@ -24,9 +28,18 @@
         }
 
         .header__sign {
-
-            .button {
-                margin-right: 15px;
+            display: flex;
+            flex-direction: row;
+            gap: 15px;
+            @media (max-width: 600px) {
+                flex-wrap: wrap;
+                align-self: flex-end;
+                justify-content: flex-end;
+                gap: 5px;
+                .button , .button-reverse{
+                    padding: 5px 10px;
+                    margin: 0;
+                }
                 
             }
             .header__button-signin {
@@ -68,8 +81,10 @@
                     border-color:  lighten(blueviolet, 20%);    ;
                 }
             }
-            
+           
+           
         }
+      
     }
 
     &__button-add {

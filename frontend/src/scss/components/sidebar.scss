@@ -1,9 +1,25 @@
 @import '../variables.scss';
 
 .sidebar {
+
     width: 400px;
+    @media (max-width: 1200px) {
+        max-width: 800px;
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        
+        align-items: flex-start;
+        justify-content: center;
+        gap: 20px;
+
+        &__tags, &__comments {
+            width: 390px;
+        }
+    }
     &__tags {
-       
+    
         justify-content: center;
         border-radius: 3px;
         background-color: $white;
@@ -16,6 +32,7 @@
 
         }
         .list-tags {
+            
             padding: 0 10px;
             display: flex;
             flex-direction: column;
@@ -46,6 +63,7 @@
         }
     }
     &__comments {
+  
         border-radius: 3px;
         background-color: $white;
         padding: 30px;

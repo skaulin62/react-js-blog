@@ -67,7 +67,7 @@ const PostPage = () => {
                 src={
                   data.imageUrl
                     ? data?.imageUrl?.includes("/uploads/")
-                      ? `${process.env.REACT_APP_API_URL}${data?.imageUrl}`
+                      ? `https://s6nder-react-blog.onrender.com${data?.imageUrl}`
                       : data?.imageUrl
                     : ""
                 }
@@ -76,7 +76,11 @@ const PostPage = () => {
             <div className="post__info">
               <div className="post__user-info">
                 <div className="post__user-photo-overflow">
-                  <img src={data.user.avatarUrl} />
+                  <img
+                    src={
+                      data.user?.avatarUrl || "/assets/images/avatar-icon.webp"
+                    }
+                  />
                 </div>
                 <div className="post__pseudo">
                   <span className="username">
@@ -128,7 +132,10 @@ const PostPage = () => {
           </div>
           <div className={styles.commentsPost__add}>
             <div className={styles.overflow}>
-              <img src={user.avatarUrl} alt="avatar" />
+              <img
+                src={user?.avatarUrl || "/assets/images/avatar-icon.webp"}
+                alt="avatar"
+              />
             </div>
 
             <div className={styles.commentsPost__createField}>

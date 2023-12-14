@@ -27,7 +27,6 @@ const SideBar = ({
     if (tags.length) {
       return (
         <>
-          <h2>Tags</h2>
           <ul className="list-tags">
             {isLoadingTags ? (
               <CustomLoader />
@@ -55,7 +54,9 @@ const SideBar = ({
         </>
       );
     } else {
-      return <h2 style={{ margin: "10px auto" }}>Not tags😅</h2>;
+      return (
+        <h2 style={{ textAlign: "center", margin: "10px auto" }}>Not tags😅</h2>
+      );
     }
   };
 
@@ -76,7 +77,11 @@ const SideBar = ({
   };
   return (
     <div className="sidebar">
-      <div className="sidebar__tags">{renderTags()}</div>
+      <div className="sidebar__tags">
+        {" "}
+        <h2>Tags</h2>
+        {renderTags()}
+      </div>
       <div className="sidebar__comments">
         <h2>Comments</h2>
         <div className="list-comments">{renderComments()}</div>

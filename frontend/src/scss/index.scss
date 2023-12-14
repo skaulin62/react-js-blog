@@ -11,6 +11,11 @@
 
 // clear default styles
 
+.root {
+  overflow-x: hidden;
+
+}
+
 button, input {
     outline: none;
     background-color: transparent;
@@ -72,6 +77,15 @@ body {
     margin-top: 20px;
     display: flex;  
     justify-content: space-between;
+    
+ 
+
+    @media (max-width: 1200px) {
+      justify-content: center;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 20px;
+    }
   }
 
   &__posts {
@@ -83,4 +97,6 @@ body {
     height: 100%;
   }
 }
+
+
 

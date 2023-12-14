@@ -6,7 +6,10 @@ const Comment = ({ data }) => {
   return (
     <div className={styles.comment}>
       <div className={styles.overflow}>
-        <img src={data.user.avatarUrl} alt="avatar" />
+        <img
+          src={data.user?.avatarUrl || "/assets/images/avatar-icon.webp"}
+          alt="avatar"
+        />
       </div>
 
       <div className={styles.info}>

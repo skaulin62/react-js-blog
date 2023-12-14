@@ -5,13 +5,27 @@ import { Formik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
 import { fetchUserRegister, selectIsAuth } from "../../Redux/slices/sliceAuth";
+import axios from "../../API/axios";
 const Registration = () => {
   const dispatch = useDispatch();
-
+  const fileRef = React.useRef(null);
   const isAuth = useSelector(selectIsAuth);
+  const [avatarUrl, setAvatarUrl] = React.useState("");
   if (isAuth) {
     return <Navigate to="/" />;
   }
+
+  const onSelectFile = async (event) => {
+    try {
+      const formData = new FormData();
+      formData.append("image", event.target.files[0]);
+      const { data } = await axios.post("/upload", formData);
+      setAvatarUrl(data.url);
+      console.log(avatarUrl);
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
     <div className={styles.registration}>
       <h2>Sign Up</h2>
@@ -65,6 +79,7 @@ const Registration = () => {
               email: values.email,
               fullName: values.name + " " + values.lastName,
               password: values.password,
+              avatarUrl,
             })
           );
           if (!data?.payload) {
@@ -74,8 +89,15 @@ const Registration = () => {
       >
         {({ values, errors, handleChange, handleSubmit }) => (
           <form onSubmit={handleSubmit} className={styles.form}>
-            <div className={styles.avatar}>
-              <img src="assets/images/avatar-icon.webp" alt="avatar" />
+            <div
+              onClick={() => fileRef.current.click()}
+              className={styles.avatar}
+            >
+              <img
+                src={avatarUrl || "/assets/images/avatar-icon.webp"}
+                alt="avatar"
+              />
+              <input ref={fileRef} onChange={onSelectFile} type="file" hidden />
             </div>
             <label>Email</label>
             <CustomInput

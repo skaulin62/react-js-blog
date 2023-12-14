@@ -48,12 +48,13 @@ const AddPostPage = () => {
       console.log(params);
     } catch {
       alert("Something's wrong");
+    } finally {
     }
   };
 
   useEffect(() => {
     if (!isAuth && !window.localStorage.getItem("token")) {
-      return <Navigate to="/signin" />;
+      navigate("/signin");
     }
     if (isEditing) {
       axios
@@ -72,90 +73,88 @@ const AddPostPage = () => {
         })
         .finally(() => {
           setLoading(false);
+          console.log(loading, error);
         });
+    } else {
+      setLoading(false);
     }
   }, []);
 
   return (
     <>
-      {!loading ? (
-        !error ? (
-          <div
-            style={{ width: "100%", background: "white", borderRadius: "3px" }}
-          >
-            <div className={styles.createdPost}>
-              <button
-                onClick={() => fileRef.current.click()}
-                className="button"
-              >
-                Download Picture
-              </button>
-
-              {fields.imageUrl && (
-                <div>
-                  <img
-                    width={250}
-                    height={250}
-                    src={`${process.env.REACT_APP_API_URL}${fields.imageUrl}`}
-                  />
-                  <button
-                    className={styles.remove}
-                    style={{ border: "none" }}
-                    onClick={() => setFields({ ...fields, imageUrl: "" })}
-                  >
-                    Delete
-                  </button>
-                </div>
-              )}
-              <input
-                ref={fileRef}
-                type="file"
-                onChange={handleChangeInput}
-                hidden
-              />
-              <input
-                className={styles.createdPost__title}
-                value={fields.title}
-                onChange={(e) =>
-                  setFields({
-                    ...fields,
-                    title: e.target.value,
-                  })
-                }
-                placeholder="Article title..."
-              />
-              <input
-                className={styles.createdPost__tags}
-                placeholder="tags"
-                value={fields.tags}
-                onChange={(e) => {
-                  setFields({
-                    ...fields,
-                    tags: e.target.value,
-                  });
-                }}
-              />
-              <textarea
-                onChange={(e) =>
-                  setFields({
-                    ...fields,
-                    text: e.target.value,
-                  })
-                }
-                value={fields.text}
-              />
-              <button onClick={onClickCreatePost} className="button-reverse">
-                {!isEditing ? "Create" : "Save"}
-              </button>
-            </div>
-          </div>
-        ) : (
-          <h2 style={{ textAlign: "center", padding: "50px 0" }}>
-            Not Found😅
-          </h2>
-        )
+      {loading ? (
+        <div style={{ textAlign: "center" }}>
+          <CustomLoader />
+        </div>
+      ) : error ? (
+        <h2 style={{ textAlign: "center", padding: "50px 0" }}>Not Found😅</h2>
       ) : (
-        <CustomLoader />
+        <div
+          style={{ width: "100%", background: "white", borderRadius: "3px" }}
+        >
+          <div className={styles.createdPost}>
+            <button onClick={() => fileRef.current.click()} className="button">
+              Download Picture
+            </button>
+
+            {fields.imageUrl && (
+              <div>
+                <img
+                  width={250}
+                  height={250}
+                  src={`https://s6nder-react-blog.onrender.com${fields.imageUrl}`}
+                />
+                <button
+                  className={styles.remove}
+                  style={{ border: "none" }}
+                  onClick={() => setFields({ ...fields, imageUrl: "" })}
+                >
+                  Delete
+                </button>
+              </div>
+            )}
+            <input
+              ref={fileRef}
+              type="file"
+              onChange={handleChangeInput}
+              hidden
+            />
+            <input
+              className={styles.createdPost__title}
+              value={fields.title}
+              onChange={(e) =>
+                setFields({
+                  ...fields,
+                  title: e.target.value,
+                })
+              }
+              placeholder="Article title..."
+            />
+            <input
+              className={styles.createdPost__tags}
+              placeholder="tags"
+              value={fields.tags}
+              onChange={(e) => {
+                setFields({
+                  ...fields,
+                  tags: e.target.value,
+                });
+              }}
+            />
+            <textarea
+              onChange={(e) =>
+                setFields({
+                  ...fields,
+                  text: e.target.value,
+                })
+              }
+              value={fields.text}
+            />
+            <button onClick={onClickCreatePost} className="button-reverse">
+              {!isEditing ? "Create" : "Save"}
+            </button>
+          </div>
+        </div>
       )}
     </>
   );
