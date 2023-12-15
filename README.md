@@ -18,7 +18,7 @@ Frontend:
 react-router-dom, redux-toolkit, clsx, scss, react-content-loader, react-loading-skeleton, axios, Formik
 
 Backend:
-mongoose, jsowebtoken, express, express-validator fs, multes, cors, 
+mongoose, jsowebtoken, express, express-validator fs, multes, cors, nodemon
 
 ## License
 
